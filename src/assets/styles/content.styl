@@ -1,0 +1,131 @@
+.content-container
+  font-size 1.2em
+
+  h1
+  h2
+  h3
+    position relative
+
+  h1:before
+  h2:before
+  h3:before
+    content '#'
+    color #4fc08d
+    position absolute
+    left -.65em
+    font-weight 600
+
+  h4
+    color #7f8c8d
+
+  img:only-child
+  img.lone-block
+  video:only-child
+  video.lone-block
+    clear both
+    display block
+    border-radius 3px
+    max-width 100%
+    margin .5em auto
+    border 1px solid #ccc
+    padding 3px
+
+  span.light
+    color #7f8c8d
+
+  figure
+  p
+  ul
+  ol
+  table
+    margin 1.2em 0
+
+  figure
+  p
+    margin-left 0
+
+  p
+  ul
+  ol
+    line-height 1.5em
+
+  ul
+  ol
+    padding-left 1.5em
+
+  blockquote
+    border-left 4px solid #4fc08d
+    border-bottom-right-radius 3px
+    border-top-right-radius 3px
+    margin 1.2em 0
+    padding-left 20px
+
+  blockquote p
+    margin-left 0
+    margin .6em 0
+
+  blockquote code
+    background #fff
+
+  iframe
+    margin 1em 0
+
+  blockquote.tip
+    border-left 4px solid #f66
+    position relative
+
+  blockquote.tip:before
+    content '!'
+    background #f66
+    border-radius 100%
+    color #fff
+    font-size 14px
+    font-weight 600
+    line-height 20px
+    text-align center
+    width 20px
+    height 20px
+    position absolute
+    top 14px
+    left -12px
+
+  p.eof
+    text-align center
+    line-height 36px
+
+    &:before
+    &:after
+      content ''
+      background #34495e
+      display inline-block
+      height 2px
+      width 50px
+      margin 0 5px
+      vertical-align middle
+
+    i:before
+      content '\2731' // ✱
+      color #34495e
+      font-size 24px
+      font-style normal
+      vertical-align middle
+
+    i.cross:before
+      content '\2670' // ♰
+
+    i.heart:before
+      content '\2764' // ❤
+
+    i.leo:before
+      content '\264c' // ♌
+
+    i.music:before
+      content '\266b' // ♫
+
+@media screen and (max-width: 999px)
+  .content-container
+    h1
+      font-size 1.6em
+
+    h2
+      font-size 1.35em
