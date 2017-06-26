@@ -42,7 +42,7 @@ const zhCN = {
     switch: '更换语言：'
   },
 
-  credit: '<a {0} href="{1}" target="_blank" rel="noopener noreferrer">{2}</a> 驱动，用 <span {0}>&#10084;</span> 构筑'
+  credit: 'All posts and contents © Ching-Yuan Su. This is supported by <a {0} href="{1}" target="_blank" rel="noopener noreferrer">{2}</a>'
 }
 
 export default zhCN

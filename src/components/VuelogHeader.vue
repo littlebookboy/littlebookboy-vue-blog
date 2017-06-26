@@ -21,13 +21,18 @@
             <a v-if="item.type === 'outgoing'" :href="item.link" target="_blank" rel="noopener noreferrer" v-text="i18nify(item.label)"></a>
             <router-link v-if="item.type !== 'dropdown' && item.type !== 'outgoing'" :to="item.path" v-text="i18nify(item.label)"></router-link>
           </li>
+          <li>
+            <vuelog-language class="lang" v-if="enableSwitch"></vuelog-language>
+          </li>
         </ul>
       </nav>
     </header>
     <img class="menu-icon" src="../assets/img/menu.svg" @click="toggleSideMenu">
     <div class="side-menu" :class="{'side-menu-open': menu}">
       <ul>
-        <li class="side-brand"><h2 v-text="i18nify(config.brand)"></h2></li>
+        <li class="side-brand">
+          <h2 v-text="i18nify(config.brand)"></h2>
+        </li>
         <li v-for="item in navigation" :class="{'side-dropdown-container': item.type === 'dropdown'}">
           <span v-if="item.type === 'dropdown' && !item.path" v-text="i18nify(item.label)"></span>
           <router-link v-if="item.type === 'dropdown' && item.path" :to="item.path" v-text="i18nify(item.label)"></router-link>
@@ -49,58 +54,72 @@
 </template>
 
 <script>
-  import { retrieveByLanguage } from '../helpers'
+import {
+  retrieveByLanguage
+} from '../helpers'
+import VuelogLanguage from './VuelogLanguage'
 
-  export default {
-    name: 'vuelog-header',
+export default {
+  name: 'vuelog-header',
 
-    computed: {
-      active () {
-        return this.$store.getters.lang
-      },
+  components: {
+    VuelogLanguage
+  },
 
-      menu () {
-        return this.$store.getters.menu
-      },
+  computed: {
 
-      config () {
-        return this.$store.getters.config
-      },
-
-      navigation () {
-        return this.$store.getters.navigation
-      }
+    enableSwitch () {
+      var switchLang = this.$store.getters.config.switchLang
+      var count = Object.keys(this.$store.getters.languages).length
+      return switchLang && (count > 1)
     },
 
-    methods: {
-      closeSideMenu () {
-        this.$store.dispatch('sideMenu', false)
-      },
-
-      toggleSideMenu () {
-        this.$store.dispatch('sideMenu', !this.menu)
-      },
-
-      i18nify (content) {
-        return retrieveByLanguage(content, this.active, this.config.defaultLang)
-      }
+    active () {
+      return this.$store.getters.lang
     },
 
-    mounted () {
-      var menuIcon = this.$el.querySelector('.menu-icon')
-      var sideMenu = this.$el.querySelector('.side-menu')
-      document.body.addEventListener('click', e => {
-        if (this.menu && e.target !== menuIcon && !sideMenu.contains(e.target)) {
-          this.closeSideMenu()
-        }
-      })
-      document.body.addEventListener('touchmove', e => {
-        if (this.menu) {
-          e.preventDefault()
-        }
-      })
+    menu () {
+      return this.$store.getters.menu
+    },
+
+    config () {
+      return this.$store.getters.config
+    },
+
+    navigation () {
+      return this.$store.getters.navigation
     }
+  },
+
+  methods: {
+    closeSideMenu () {
+      this.$store.dispatch('sideMenu', false)
+    },
+
+    toggleSideMenu () {
+      this.$store.dispatch('sideMenu', !this.menu)
+    },
+
+    i18nify (content) {
+      return retrieveByLanguage(content, this.active, this.config.defaultLang)
+    }
+  },
+
+  mounted () {
+    var menuIcon = this.$el.querySelector('.menu-icon')
+    var sideMenu = this.$el.querySelector('.side-menu')
+    document.body.addEventListener('click', e => {
+      if (this.menu && e.target !== menuIcon && !sideMenu.contains(e.target)) {
+        this.closeSideMenu()
+      }
+    })
+    document.body.addEventListener('touchmove', e => {
+      if (this.menu) {
+        e.preventDefault()
+      }
+    })
   }
+}
 </script>
 
 <style lang="stylus" scoped>

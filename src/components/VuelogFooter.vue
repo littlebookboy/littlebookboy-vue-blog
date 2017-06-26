@@ -1,27 +1,14 @@
 <template>
   <footer>
     <div v-html="$t('credit', [$options._scopeId, system.project, system.brand])"></div>
-    <vuelog-language class="lang" v-if="enableSwitch"></vuelog-language>
   </footer>
 </template>
 
 <script>
-  import VuelogLanguage from './VuelogLanguage'
-
   export default {
     name: 'vuelog-footer',
 
-    components: {
-      VuelogLanguage
-    },
-
     computed: {
-      enableSwitch () {
-        var switchLang = this.$store.getters.config.switchLang
-        var count = Object.keys(this.$store.getters.languages).length
-        return switchLang && (count > 1)
-      },
-
       system () {
         return this.$store.getters.system
       }

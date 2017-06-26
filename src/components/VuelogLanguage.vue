@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label v-text="$t('lang.switch')"></label>
+    <!--<label v-text="$t('lang.switch')"></label>-->
     <select v-model="selected" @change="switchLanguage">
       <option v-for="(value, key) in languages" :value="key" v-text="value"></option>
     </select>

@@ -1,14 +1,22 @@
-title: About Vuelog
+title: About Me
 ------------------------------------
 <!-- en-US:+ -->
 
 ### About Me
 
-I'm sorry there is no translation here for now.
++ Name: Ching-Yuan Su
++ Birthday: 18/10/1987
++ Email: kevin2pig@gmail.com
+
+### Education
+
++ National Chin-yi University of Technology
++ National Pingtung Institute of Commerce
++ Major in Computer Science and Information Engineering
 
 <!-- en-US:- -->
 
-<!-- zh-CN:+ -->
+<!-- zh-TW:+ -->
 
 <img src="https://c1.staticflickr.com/5/4216/35509481666_71ddf3cb6d_m.jpg" width="240" height="240" alt="cutmypicr2">
 
@@ -57,4 +65,4 @@ I'm sorry there is no translation here for now.
 + [Packagist](https://packagist.org/packages/littlebookboy)
 + [Medium](https://medium.com/@kevin2pig)
 
-<!-- zh-CN:- -->
+<!-- zh-TW:- -->
